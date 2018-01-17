@@ -17,7 +17,10 @@ class Post(models.Model):
         ('p','Published'),
         ('w','Withdrawn'),
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='blog_post_set')
+    # related_name='+' 로 주는 경우, related_name을 포기하겠다는 말 == user.post_set.all() 못씀
+    # 대신 shop.models.Post.objects.filter(user=user)는 사용 가능
+
    #author = models.CharField(max_length=100)
     title = models.CharField(max_length=100, verbose_name='제목')
     content = models.TextField() #길이 제한 X
