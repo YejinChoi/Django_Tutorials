@@ -48,3 +48,4 @@ class Tag(models.Model):
 
     def __str__(self): # 해당 태그명이 보여지게 하도록
         return self.name
+
