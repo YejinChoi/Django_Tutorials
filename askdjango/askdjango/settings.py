@@ -61,7 +61,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            #템플릿 설정
+            #템플릿 설정 - filesystem.Loader => 프로젝트 전반적으로 쓰일 템플릿 파일은 여기에 지정
+            #os.path.join(BASE_DIR, '프로젝트명','templates')
             os.path.join(BASE_DIR, 'askdjango','templates'),
         ],
         'APP_DIRS': True,
