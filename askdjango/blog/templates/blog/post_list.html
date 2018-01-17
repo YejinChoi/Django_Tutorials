@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>AskDjango</h1>
-        <p>{{name}}</p>
-    <h2>post_list2</h2>
+{% extends "blog/layout.html" %}
+
+{%block content %}
 
     <form action="" method="get">
         <input type="text" name="q" value="{{ q }}"/>
@@ -24,6 +17,4 @@
             </li>
         {% endfor %}
     </ul>
-
-</body>
-</html>
+{% endblock %}

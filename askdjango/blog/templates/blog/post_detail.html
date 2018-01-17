@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{post.title}}</title>
-</head>
-<body>
-    <h1>{{post.title}}</h1>
+{% extends "blog/layout.html" %}
+{% block title%}
+    {{post.title}}
+{%endblock%}
+
+{%block content %}
+ <h1>AskDjango</h1>
+    <hr/>
+    <h2>{{post.title}}</h2>
     {{post.content | linebreaks}} <!--<p>로 감싸는 방법 -->
     <hr/>
     <h3>Comments</h3>
@@ -16,6 +17,4 @@
         <small>at {{comment.updated_at}}</small>
         </li>
     {% endfor %}
-
-</body>
-</html>
+{%endblock%}
