@@ -19,12 +19,12 @@ class Post(models.Model):
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=100, verbose_name='제목')
     content = models.TextField() #길이 제한 X
-    tags = models.CharField(max_length=100, blank=False)
+    tags = models.CharField(max_length=100, blank=True)
     lnglat = models.CharField(max_length=50, blank=True,
                               validators=[lnglat_validator],
                             help_text='위도, 경도 포맷으로 입력')
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
-    tag_set = models.ManyToManyField('Tag') #관련 모델 클래스로 many to many 지정 - 모델 필드 문자열로 지정 가능하므로 이거로 릴레이션 지정할 것
+    tag_set = models.ManyToManyField('Tag',blank=True) #관련 모델 클래스로 many to many 지정 - 모델 필드 문자열로 지정 가능하므로 이거로 릴레이션 지정할 것
     created_at = models.DateTimeField(auto_now_add=True) #처음 저장될 때 저장
     updated_at = models.DateTimeField(auto_now=True) #갱신 될 때마다 저장
 
