@@ -9,11 +9,16 @@ from .models import Post
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'content_size','status','created_at', 'updated_at']
 
-    actions=['make_published'] #action을 수행하기 위함
+    actions=['make_published','make_draft'] #action을 수행하기 위함
 
     def content_size(self,post):
         return mark_safe('<strong>{}</strong>글자'.format(len(post.title)))
     content_size.short_description = '글자수'
+
+    def make_draft(self, request, queryset):
+        updated_count = queryset.update(status='d') #QuerySet.update
+        self.message_user(request,'{}건의 포스팅을 Draft로 변경'.format(updated_count)) #django message framework 활용
+    make_draft.short_description = '선택한 포스팅을 Draft로 변경하는 작업입니다.'
 
     def make_published(self, request, queryset):
         updated_count = queryset.update(status='p') #QuerySet.update
