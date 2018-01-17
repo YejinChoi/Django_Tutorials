@@ -2,6 +2,7 @@ import os
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
+from .models import Post
 
 
 # 함수 기반 뷰의 4가지 응답
@@ -9,6 +10,18 @@ from django.conf import settings
 # def mysum(request,x,y=0):
     #request : HttpRequest
     #return HttpResponse(int(x)+int(y))
+
+def post_list(request):
+    qs = Post.objects.all()
+
+    #q = request.GET.get('q','')
+    #if q:
+    #    qs = qs.filter(title_icontains=q) #q가 포함되어있는 queryset만 가져옴
+
+    return render(request, 'blog/post_list.html',{
+        'post_list' : qs,
+       # 'q' : q,
+    })
 
 
 def mysum(request,numbers):
