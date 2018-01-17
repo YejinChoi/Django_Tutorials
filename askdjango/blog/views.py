@@ -14,13 +14,13 @@ from .models import Post
 def post_list(request):
     qs = Post.objects.all()
 
-    #q = request.GET.get('q','')
-    #if q:
-    #    qs = qs.filter(title_icontains=q) #q가 포함되어있는 queryset만 가져옴
+    q = request.GET.get('q','')
+    if q:
+        qs = qs.filter(title__icontains=q) #q가 포함되어있는 queryset만 가져옴
 
     return render(request, 'blog/post_list.html',{
         'post_list' : qs,
-       # 'q' : q,
+        'q' : q,
     })
 
 
