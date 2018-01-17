@@ -15,8 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url , include
 from django.contrib import admin
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls', namespace='blog')),
 ]
+
+
+# 해당 페이지의 템플릿에 body가 있어야 debug_toolbar가 주입됨
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
