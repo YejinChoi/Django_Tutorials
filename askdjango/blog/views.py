@@ -1,8 +1,9 @@
 import os
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from .models import Post
+from django.http import Http404
 
 
 # 함수 기반 뷰의 4가지 응답
@@ -35,7 +36,7 @@ def hello(request, name, age):
     return HttpResponse('안녕하세요. {}. {} 살 이시네요.'.format(name,age))
 
 
-# HTTPResponse로 응답
+# HTTPResponse로 응답 (200응답)
 def post_list1(request):
     name = '공유'
     return HttpResponse('''
@@ -44,13 +45,13 @@ def post_list1(request):
     '''.format(name=name))
 
 
-# 템플릿을 통한 응답
+# 템플릿을 통한 응답 (200응답)
 def post_list2(request):
     name = 'Yejin'
     return render(request,'blog/post_list2.html', {'name':name})
 
 
-# json 통한 응답
+# json 통한 응답 (200응답)
 def post_list3(request):
     return JsonResponse({
         'message' : 'Python',
@@ -68,3 +69,16 @@ def excel_download(request):
         #필요한 응답헤더 세팅
         response['Content-Disposition'] = 'attachment;filename="{}"'.format(filename)
         return response
+
+
+def post_detail(request, id):
+    #try:
+    #   post = Post.objects.get(id = id)
+    #except (Post.DoesNotExist, Post.MultipleObjectsReturned):
+    #    raise Http404
+
+    post = get_object_or_404(Post, id=id) # try-except와 동일 - 이게 더 훨씬 간편
+    return render(request, 'blog/post_detail.html',{
+        'post' : post,
+    })
+
