@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>AskDjango</h1>
+        <p>{{name}}</p>
+    <h2>post_list2</h2>
+
+    <form action="" method="get">
+        <input type="text" name="q" value="{{ q }}"/>
+        <input type="submit" value="search"/>
+    </form>
+
+    <ul>
+        {%for post in post_list %}
+            <li>
+                {{ post.id }}
+                <a href="/blog/{{post.id}}/">{{post.title}}</a>
+                <small>by {{ post.author }}</small>
+                <small>at {{ post.created_at }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
