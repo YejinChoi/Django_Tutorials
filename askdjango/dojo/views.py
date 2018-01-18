@@ -2,6 +2,7 @@ import os
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse,JsonResponse
 from django.conf import settings
+from .forms import PostForm
 from .models import Post
 
 # Create your views here.
@@ -49,3 +50,15 @@ def excel_download(request):
         # 필요한 응답헤더 세팅
         response['Content-Disposition'] = 'attachment;filename="{}"'.format(filename)
         return response
+
+
+
+def post_new(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+    else:
+        form = PostForm()
+
+    return render(request,'dojo/post_form.html',{
+        'form' : form,
+    })
