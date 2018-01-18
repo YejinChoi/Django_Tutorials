@@ -2,6 +2,7 @@ import re
 from django.db import models
 from django.forms import ValidationError
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 
 def lnglat_validator(value):
@@ -38,6 +39,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # 특정 모델 레코드에 대한 url을 얻는 함수 - 꼭 구현할 것
+    def get_absolute_url(self):
+        return reverse('blog:post_detail',args=[self.id])
 
 
 class Comment(models.Model):
