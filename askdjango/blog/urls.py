@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 from . import views_cbv
+#blog/urls.py
 
 urlpatterns = [
     #url(r'^$',views.post_list, name='post_list'),
@@ -19,6 +20,7 @@ urlpatterns = [
     url(r'^cbv/list2/$', views_cbv.post_list2),
     url(r'^cbv/list3/$', views_cbv.post_list3),
     url(r'^cbv/excel/$', views_cbv.excel_download),
+    url(r'^cbv/new/$',views_cbv.post_new),
 
     url(r'^(?P<id>\d+)/$', views.post_detail, name='post_detail'),
 ]

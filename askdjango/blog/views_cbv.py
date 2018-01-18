@@ -1,7 +1,24 @@
 import os
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, CreateView
 from django.http import HttpResponse, JsonResponse
+from .models import Post
+from django import forms
 
+#blog/forms.py
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    #success_url =
+
+post_new = PostCreateView.as_view()
 
 class PostListView1(View):
     def get(self,request):
