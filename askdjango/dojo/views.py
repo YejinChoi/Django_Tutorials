@@ -1,3 +1,51 @@
-from django.shortcuts import render
+import os
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse,JsonResponse
+from django.conf import settings
+from .models import Post
 
 # Create your views here.
+#함수 기반 뷰의 4가지 응답
+
+#def my_sum(request,x,y):
+#    return HttpResponse(int(x)+int(y))
+
+def my_sum(requset, numbers):
+    result = sum(map(int, numbers.split("/")))
+    return HttpResponse(result)
+
+def hello(request,name, age):
+    return HttpResponse('안녕하세요. HelloWorld {}님. {}세'.format(name,age))
+
+
+#1. HttpResponse로 응답
+def post_list1(request):
+    name = 'Smilegate'
+    return HttpResponse('''
+        <h1>Django-dojo-views.py</h1>
+        <p><strong>{name}</strong></p>
+    '''.format(name=name))
+
+
+#2. 템플릿을 통한 응답
+def post_list2(request):
+    name='smileGateSerDevCamp'
+    return render(request,'dojo/post_list.html',{'name':name})
+
+
+#3. JsonResponse로 응답
+def post_list3(request):
+    return JsonResponse({
+        'messages' : 'Python3-Django-Tutorial',
+        'items' : ['Python3.6.3','pycharm','community']
+    }, json_dumps_params={'ensure_ascii':False})
+
+#4. 파일 다운로드 응답
+def excel_download(request):
+    filePath = os.path.join(settings.BASE_DIR,'ie_data.xls')
+    filename = os.path.basename(filePath)
+    with open (filePath,'rb') as f:
+        response = HttpResponse(f, content_type = 'application/vnd.ms-excel')
+        # 필요한 응답헤더 세팅
+        response['Content-Disposition'] = 'attachment;filename="{}"'.format(filename)
+        return response
