@@ -19,11 +19,12 @@ def post_list(request):
     if q:
         qs = qs.filter(title__icontains=q) #q가 포함되어있는 queryset만 가져옴
 
-    return render(request, 'blog/post_list.html',{
+    response =  render(request, 'blog/post_list.html',{
         'post_list' : qs,
         'q' : q,
-    })
-
+    }) #템플릿을 통한 렌더링으로 response주는것이 좋다
+    #HttpResponse 인스턴스인데, render를 통해서, 좀 더 쉽게 템플릿을 통한 렌더링
+    return response
 
 def mysum(request,numbers):
     #request : HttpRequest
