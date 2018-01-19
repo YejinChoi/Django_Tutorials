@@ -15,6 +15,9 @@ class PostForm(forms.ModelForm):
         fields = ['title','content']
         #전체 필드
         #fields = '__all__'
+        widget = {
+            'user_agent' : forms.HiddenInput,
+        }
 
 '''
 class PostForm(forms.Form):
