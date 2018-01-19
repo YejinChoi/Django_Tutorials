@@ -4,6 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from django.conf import settings
 from .forms import PostForm
 from .models import Post
+from django.contrib import messages
 
 # Create your views here.
 #함수 기반 뷰의 4가지 응답

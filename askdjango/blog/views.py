@@ -5,6 +5,7 @@ from django.conf import settings
 from .models import Post
 from django.http import Http404
 from .forms import PostForm
+from django.contrib import messages
 
 #blog/views.py
 
@@ -91,6 +92,7 @@ def post_new(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save()
+            messages.success(request,'새 포스팅을 저장했습니다.') # msg 등록
             return redirect(post) #get_absoulute_url 함수 구현했으므로 이렇게 사용 가능
             #post.get_absolute_url() => post.detail()로 이동
     else:
@@ -105,6 +107,7 @@ def post_edit(request, id):
         form = PostForm(request.POST, request.FILES,instance=post)
         if form.is_valid(): # 이때, 유효성 검사가 수행됨
             post = form.save()
+            messages.success(request, '포스팅을 수정했습니다.')  # msg 등록
             return redirect(post)
 
     else:
