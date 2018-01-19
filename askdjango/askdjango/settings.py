@@ -144,3 +144,6 @@ from django.contrib.messages import constants
 
 MESSAGE_LEVEL = constants.DEBUG #지금부터 debug 레벨의 messages를 남길 수 있음
 MESSAGE_TAGE = {constants.ERROR : 'danger'}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -33,6 +33,7 @@ class Post(models.Model):
     tag_set = models.ManyToManyField('Tag',blank=True) #관련 모델 클래스로 many to many 지정 - 모델 필드 문자열로 지정 가능하므로 이거로 릴레이션 지정할 것
     created_at = models.DateTimeField(auto_now_add=True) #처음 저장될 때 저장
     updated_at = models.DateTimeField(auto_now=True) #갱신 될 때마다 저장
+    photo = models.ImageField(blank=True)
 
     class Meta:
         ordering = ['-id']
