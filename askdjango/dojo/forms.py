@@ -12,12 +12,14 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title','content']
+        fields = ['title','content','user_agent']
         #전체 필드
         #fields = '__all__'
-        widget = {
+        widgets = {
             'user_agent' : forms.HiddenInput,
         }
+
+
 
 '''
 class PostForm(forms.Form):

@@ -4,10 +4,12 @@ from django.core.validators import MinLengthValidator
 #dojo/models.py
 
 
+
 #validator가 모델에 정의되면 admin에서도 validator동작하게 됨
 def min_length_3_validator(value):
     if len(value) < 3:
         raise forms.ValidationError('3글자 이상 입력해주세요.') #예외만 발생하는 형태
+
 
 # Create your models here.
 class Post(models.Model):

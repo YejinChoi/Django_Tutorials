@@ -102,5 +102,6 @@ def post_edit(request,id):
     else:
         form = PostForm(instance=post)
 
-    return render(request, 'dojo/post_form.html',
-                  {'form' :  form},)
+    return render(request, 'dojo/post_form.html',{
+        'form' :  form,
+    })
