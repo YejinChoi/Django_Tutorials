@@ -135,7 +135,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'askdjango','static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, '..','staticfiles')
+#실서비스 배포 전에 static 파일들을 모아서 배포 서버에 복사
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 INTERNAL_IPS = ['127.0.0.1']
 
