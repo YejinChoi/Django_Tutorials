@@ -89,7 +89,7 @@ def post_new(request):
 
 
 def post_edit(request,id):
-    post = get_object_or_404(Post, id=id)
+    post = get_object_or_404(Post, id=id) #인스턴스 획득
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES,instance=post)
         if form.is_valid():

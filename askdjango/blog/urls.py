@@ -4,11 +4,13 @@ from . import views_cbv
 #blog/urls.py
 
 urlpatterns = [
-    #url(r'^$',views.post_list, name='post_list'),
+    url(r'^$',views.post_list, name='post_list'),
     url(r'^sum/(?P<x>\d+)/$', views.mysum),
     url(r'^sum/(?P<x>\d+)/(?P<y>\d+)/$',views.mysum),
     url(r'^sum/(?P<numbers>[\d/]+)/$', views.mysum),
     url(r'^hello/(?P<name>[ㄱ-힣]+)/(?P<age>\d+)/$',views.hello),
+    url(r'^new/$', views.post_new, name='post_new'),
+    url(r'^(?P<id>\d+)/edit/$', views.post_edit, name='post_edit'),
 
     url(r'^list/$', views.post_list,name='post_list'),
     url(r'^list1/$', views.post_list1),
