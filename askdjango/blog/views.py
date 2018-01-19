@@ -22,6 +22,8 @@ def post_list(request):
     if q:
         qs = qs.filter(title__icontains=q) #q가 포함되어있는 queryset만 가져옴
 
+    # messages.error(request,'에러 메시지 테스트')
+
     response =  render(request, 'blog/post_list.html',{
         'post_list' : qs,
         'q' : q,
