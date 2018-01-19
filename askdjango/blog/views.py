@@ -103,7 +103,7 @@ def post_edit(request, id):
 
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES,instance=post)
-        if form.is_valid():
+        if form.is_valid(): # 이때, 유효성 검사가 수행됨
             post = form.save()
             return redirect(post)
 
