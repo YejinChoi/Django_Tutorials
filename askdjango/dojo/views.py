@@ -52,14 +52,15 @@ def excel_download(request):
         return response
 
 
-
 def post_new(request):
-    if request.method == 'POST': #유저가 데이터 보내는 경우이므로
-        form = PostForm(request.POST,request.FILES) #file이없으면 request.FILES 없어도 된다
+    if request.method == 'POST': # 유저가 데이터 보내는 경우이므로
+        form = PostForm(request.POST, request.FILES) # file이 없으면 request.FILES 없어도 된다
         if form.is_valid():
             # 방법5)dojo/forms.py에 구현
-            post = form.save()
-            return redirect(post)
+            post = form.save(commit=False)
+            post.ip = request.META['REMOTE_ADDR']
+            post.save()
+            return redirect('/dojo/')
             # DB저장 방법1)
             # post = Post()
             # post.title = form.cleaned_data['title']
@@ -80,8 +81,8 @@ def post_new(request):
 
             #print(form.cleaned_data) #user의 data를 사전형태로 제공받을 수 있음
             #return redirect('/dojo/') #namespace : name
-        else: #검증에 실패하면, form.errors와 form.각필드.errors에 오류 정보를 저장
-            form.errors
+        #else: #검증에 실패하면, form.errors와 form.각필드.errors에 오류 정보를 저장
+            #form.errors
     else:
         form = PostForm()
-    return render(request, 'dojo/post_form.html',{'form' : form})
+    return render(request, 'dojo/post_form.html', {'form' : form},)
