@@ -5,14 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<form action="" method="post">
-    {% csrf_token %} <!-- csrf_token 발급 : POST 요청에서는 필수 !-->
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit"/>
-
-</form>
-
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit"/>
+    </form>
 </body>
 </html>

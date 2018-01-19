@@ -4,10 +4,10 @@ from . import views_cbv
 
 urlpatterns = [
     url(r'^new/$', views.post_new),
-    url(r'^(?P<pk>\d+)/$', views.post_detail),
-    url(r'^(?P<id>\d+)/edit/$', views.post_edit),
+    #url(r'^(?P<pk>\d+)/$', views.post_detail),
+    #url(r'^(?P<id>\d+)/edit/$', views.post_edit),
 
-    url(r'^sum/(?P<numbers>[\d/]+)/$', views.mysum),
+    url(r'^sum/(?P<numbers>[\d/]+)/$', views.my_sum),
     url(r'^hello/(?P<name>[ㄱ-힣]+)/(?P<age>\d+)/$', views.hello),
 
     url(r'^list1/$', views.post_list1),
