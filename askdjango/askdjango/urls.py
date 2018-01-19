@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.shortcuts import redirect
 from django.views.generic import RedirectView
+from django.conf.urls.static import static
 
 
 #def root(request):
@@ -35,6 +36,8 @@ urlpatterns = [
     url(r'^shop/', include('shop.urls',namespace='shop')),
 ]
 
+#settings.DEBUG=False 에서는 static 함수에서 빈 리스트를 리턴
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # 해당 페이지의 템플릿에 body가 있어야 debug_toolbar가 주입됨
 if settings.DEBUG:
