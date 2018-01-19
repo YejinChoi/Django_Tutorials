@@ -129,7 +129,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' #각 static 파일에 대한 URL Prefix
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'askdjango','static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, '..','staticfiles')
 
 INTERNAL_IPS = ['127.0.0.1']
 
