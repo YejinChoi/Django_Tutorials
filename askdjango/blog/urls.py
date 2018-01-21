@@ -4,7 +4,10 @@ from . import views_cbv
 #blog/urls.py
 
 urlpatterns = [
-    url(r'^$',views.post_list, name='post_list'),
+    #url(r'^$',views.post_list, name='post_list'),
+
+    url(r'^$', views_cbv.post_list, name='post_list'),
+
     url(r'^sum/(?P<x>\d+)/$', views.mysum),
     url(r'^sum/(?P<x>\d+)/(?P<y>\d+)/$',views.mysum),
     url(r'^sum/(?P<numbers>[\d/]+)/$', views.mysum),
