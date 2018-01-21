@@ -32,6 +32,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^dojo/', include('dojo.urls', namespace='dojo')),
+
+    #django.contrib.auth 앱 내에서는 namespace를 쓰지 않는 것으로
+    #이미 구현이 되어있기 때문에, 이를 따라 accounts 앱에서는 namespace X
     url(r'^accounts/', include('accounts.urls')),
     url(r'^shop/', include('shop.urls',namespace='shop')),
 ]

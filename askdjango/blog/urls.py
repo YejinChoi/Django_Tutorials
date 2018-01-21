@@ -4,7 +4,7 @@ from . import views_cbv
 #blog/urls.py
 
 urlpatterns = [
-    #url(r'^$',views.post_list, name='post_list'),
+    url(r'^$',views.post_list, name='post_list'),
 
     url(r'^$', views_cbv.post_list, name='post_list'),
 
@@ -27,7 +27,7 @@ urlpatterns = [
     #url(r'^cbv/excel/$', views_cbv.excel_download),
     url(r'^cbv/new/$',views_cbv.post_new),
 
-    #url(r'^(?P<id>\d+)/$', views.post_detail, name='post_detail'),
+    url(r'^(?P<id>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^cbv/(?P<pk>\d+)/$', views_cbv.post_detail, name='post_detail'),
     url(r'^cbv/(?P<pk>\d+)/edit/$', views_cbv.post_edit),
 

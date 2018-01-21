@@ -16,6 +16,7 @@ from django.contrib import messages
     #return HttpResponse(int(x)+int(y))
 
 def post_list(request):
+    print(request.user.is_authenticated)
     qs = Post.objects.all()
 
     q = request.GET.get('q','')
