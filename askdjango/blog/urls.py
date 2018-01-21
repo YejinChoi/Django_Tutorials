@@ -30,4 +30,6 @@ urlpatterns = [
     #url(r'^(?P<id>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^cbv/(?P<pk>\d+)/$', views_cbv.post_detail, name='post_detail'),
     url(r'^cbv/(?P<pk>\d+)/edit/$', views_cbv.post_edit),
+
+    url(r'^cbv/(?P<pk>\d+)/delete/$', views_cbv.post_delete),
 ]

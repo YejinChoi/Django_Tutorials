@@ -1,5 +1,5 @@
 import os
-from django.views.generic import View, TemplateView, CreateView, ListView, DetailView, UpdateView
+from django.views.generic import View, TemplateView, CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.http import HttpResponse, JsonResponse
 from .models import Post
 from django import forms
@@ -16,6 +16,9 @@ post_detail = DetailView.as_view(model=Post)
 # CBV : CreateView & UpdateView 적용
 post_edit = UpdateView.as_view(model=Post, fields='__all__')
 post_new = CreateView.as_view(model=Post)
+
+# CBV : DeleteView 적용
+post_delete = DeleteView.as_view(model=Post, success_url='/blog/')
 
 """
 class PostForm(forms.ModelForm):
