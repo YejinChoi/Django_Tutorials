@@ -3,6 +3,7 @@ from django.views.generic import View, TemplateView, CreateView, ListView, Detai
 from django.http import HttpResponse, JsonResponse
 from .models import Post
 from django import forms
+from django.core.urlresolvers import reverse_lazy
 
 #blog/forms.py
 
@@ -17,8 +18,9 @@ post_detail = DetailView.as_view(model=Post)
 post_edit = UpdateView.as_view(model=Post, fields='__all__')
 post_new = CreateView.as_view(model=Post)
 
-# CBV : DeleteView 적용
-post_delete = DeleteView.as_view(model=Post, success_url='/blog/')
+# CBV : DeleteView 적용 + reverse_lazy 적용
+# reverse_lazy : 모듈 import 시점에 url reverse가 필요할 때 사용
+post_delete = DeleteView.as_view(model=Post, success_url=reverse_lazy('blog:post_list'))
 
 """
 class PostForm(forms.ModelForm):
