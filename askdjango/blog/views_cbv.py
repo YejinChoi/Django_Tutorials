@@ -1,5 +1,5 @@
 import os
-from django.views.generic import View, TemplateView, CreateView, ListView, DetailView
+from django.views.generic import View, TemplateView, CreateView, ListView, DetailView, UpdateView
 from django.http import HttpResponse, JsonResponse
 from .models import Post
 from django import forms
@@ -13,6 +13,11 @@ post_list = ListView.as_view(model=Post, paginate_by=10)
 # CBV : DetaillView 적용
 post_detail = DetailView.as_view(model=Post)
 
+# CBV : CreateView & UpdateView 적용
+post_edit = UpdateView.as_view(model=Post, fields='__all__')
+post_new = CreateView.as_view(model=Post)
+
+"""
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -81,3 +86,4 @@ class ExcelDownloadView(View):
             return response
 
 excel_download = ExcelDownloadView.as_view()
+"""
