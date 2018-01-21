@@ -1,6 +1,7 @@
 #accounts/views.py
 from django.conf import settings
 from django.shortcuts import render,redirect
+from django.contrib.auth.forms import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -19,5 +20,8 @@ def signup(request):
     })
 
 
+# profile 함수가 호출될 때 login 되어있는 상황임을 보장
+# 프로필 뷰에 login_required 장식자 추가
+@login_required
 def profile(request):
     return render(request,'accounts/profile.html')
