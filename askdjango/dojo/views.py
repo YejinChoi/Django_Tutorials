@@ -5,6 +5,7 @@ from django.conf import settings
 from .forms import PostForm
 from .models import Post
 from django.contrib import messages
+from django.views.generic import DetailView
 
 # Create your views here.
 #함수 기반 뷰의 4가지 응답
@@ -129,7 +130,7 @@ def generate_view_fn(model):
     return view_fn
 
 post_detail = generate_view_fn(Post)
-"""
+
 
 # CBV 샘플- STEP 3. CBV컨셉만 구현
 class DetailView(object):
@@ -156,3 +157,7 @@ class DetailView(object):
         return view
 
 post_detail = DetailView.as_view(Post)
+"""
+
+# CBV 샘플- STEP 4. CBV 구현
+post_detail = DetailView.as_view(model=Post, pk_url_kwarg='id')
