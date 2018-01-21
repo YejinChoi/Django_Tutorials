@@ -1,5 +1,5 @@
 import os
-from django.views.generic import View, TemplateView, CreateView, ListView
+from django.views.generic import View, TemplateView, CreateView, ListView, DetailView
 from django.http import HttpResponse, JsonResponse
 from .models import Post
 from django import forms
@@ -9,6 +9,9 @@ from django import forms
 # CBV : ListView 적용
 #페이지 단위를 3개로 지정
 post_list = ListView.as_view(model=Post, paginate_by=10)
+
+# CBV : DetaillView 적용
+post_detail = DetailView.as_view(model=Post)
 
 class PostForm(forms.ModelForm):
     class Meta:
