@@ -157,7 +157,11 @@ class DetailView(object):
         return view
 
 post_detail = DetailView.as_view(Post)
-"""
+
 
 # CBV 샘플- STEP 4. CBV 구현
 post_detail = DetailView.as_view(model=Post, pk_url_kwarg='id')
+"""
+
+# CBV 샘플- STEP 5. CBV를 좀 더 심플하게 구현 - urls.py 고침
+post_detail = DetailView.as_view(model=Post)
